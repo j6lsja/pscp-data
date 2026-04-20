@@ -6,9 +6,11 @@ app.use(express.json());
 let database = {};
 
 app.post("/save", (req, res) => {
-    const { userId, hp } = req.body;
+    const { userId, exp } = req.body;
 
-    database[userId] = { hp };
+    database[userId] = { 
+        exp: exp
+                       };
 
     console.log("Saved:", userId, database[userId]);
 
@@ -18,7 +20,7 @@ app.post("/save", (req, res) => {
 app.get("/load/:userId", (req, res) => {
     const userId = req.params.userId;
 
-    const data = database[userId] || { hp: 100 };
+    const data = database[userId] || { exp: 0 };
 
     res.send(data);
 });
