@@ -3,27 +3,26 @@ const app = express();
 
 app.use(express.json());
 
-// fake database (replace later with real DB)
 let database = {};
 
-// SAVE player data
 app.post("/save", (req, res) => {
-    const { userId, exp } = req.body;
+    const { userId, hp } = req.body;
 
-    database[userId] = { exp };
+    database[userId] = { hp };
+
+    console.log("Saved:", userId, database[userId]);
 
     res.send({ status: "saved" });
 });
 
-// LOAD player data
 app.get("/load/:userId", (req, res) => {
     const userId = req.params.userId;
 
-    res.send(database[userId] || { exp: 0 });
+    const data = database[userId] || { hp: 100 };
+
+    res.send(data);
 });
 
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-    console.log("Server running on port " + PORT);
+app.listen(3000, () => {
+    console.log("Server running on port 3000");
 });
