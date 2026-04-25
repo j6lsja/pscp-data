@@ -28,7 +28,7 @@ app.post("/save", (req, res) => {
 app.get("/load/:userId", (req, res) => {
     const userId = req.params.userId;
 
-    const data = database[userId] || { exp: 0, lv: 0};
+    const data = database[userId] || { exp: 0, lv: 0, PlayTime: 0, KillasSCP: 0, SCPKill: 0, PlayerKill: 0, PlayerDeath: 0, Badge_ContainmentSpecialist: false, Badge_CIProperty: false};
 
     res.send(data);
 });
