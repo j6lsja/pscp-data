@@ -26,7 +26,7 @@ start();
 // default data (VERY IMPORTANT)
 const defaultData = {
     exp: 0,
-    lv: 0,
+    lv: 1,
     PlayTime: 0,
     KillasSCP: 0,
     SCPKill: 0,
